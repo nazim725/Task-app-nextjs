@@ -11,7 +11,9 @@ const CreateTask = () => {
   const [errors, setErrors] = useState({});
   //  get single data for edit and this data is showd in the edit form start
   const getTask = async () => {
-    const response = await fetch(`http://localhost:3000/api/tasks/${query.id}`);
+    const response = await fetch(
+      `https://task-app-nextjs.herokuapp.com/api/tasks/${query.id}`
+    );
     const data = await response.json();
     setNewTask({ title: data.title, description: data.description });
   };
@@ -77,13 +79,16 @@ const CreateTask = () => {
 
   const updateTask = async () => {
     try {
-      await fetch(`http://localhost:3000/api/tasks/${query.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newTask),
-      });
+      await fetch(
+        `https://task-app-nextjs.herokuapp.com/api/tasks/${query.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newTask),
+        }
+      );
     } catch (err) {
       console.log(err.message);
     }
@@ -91,7 +96,7 @@ const CreateTask = () => {
 
   const taskCreate = async () => {
     try {
-      await fetch("http://localhost:3000/api/tasks", {
+      await fetch("https://task-app-nextjs.herokuapp.com/api/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
