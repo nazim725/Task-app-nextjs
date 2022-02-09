@@ -63,7 +63,9 @@ export default function Home({ tasks = [] }) {
 
 //  this function for load data from database
 export async function getServerSideProps() {
-  const response = await fetch("http://localhost:3000/api/tasks/");
+  const response = await fetch(
+    "https://task-app-nextjs.herokuapp.com/api/tasks/"
+  );
   const tasks = await response.json();
   return {
     props: {
